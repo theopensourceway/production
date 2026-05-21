@@ -40,6 +40,9 @@ jobs:
       - name: Extract gettext catalogs
         run: SOURCE_DATE_EPOCH=0 uv run --locked sphinx-build -b gettext -c . _staging _build/gettext
 
+      - name: Normalize POT path references
+        run: find _build/gettext -name '*.pot' -exec sed -i 's|_staging/||g' {} +
+
       - name: Check zh_CN catalogs are current
         run: |
           uv run --locked sphinx-intl update -p _build/gettext -l zh_CN --locale-dir locales
@@ -132,10 +135,14 @@ jobs:
         run: bash tools/prepare-source.sh
 
       - name: Build English PDF
-        run: uv run --locked sphinx-build -M latexpdf -c . _staging _build/pdf/en
+        run: |
+          uv run --locked sphinx-build -b latex -c . _staging _build/pdf/en/latex
+          latexmk -pdf -dvi- -ps- -interaction=nonstopmode _build/pdf/en/latex/the-open-source-way.tex
 
       - name: Build zh_CN PDF
-        run: uv run --locked sphinx-build -M latexpdf -c . -D language=zh_CN _staging _build/pdf/zh_CN
+        run: |
+          uv run --locked sphinx-build -b latex -c . -D language=zh_CN _staging _build/pdf/zh_CN/latex
+          latexmk -pdf -dvi- -ps- -interaction=nonstopmode _build/pdf/zh_CN/latex/the-open-source-way.tex
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v4
