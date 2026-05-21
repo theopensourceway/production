@@ -1,0 +1,178 @@
+name: Docs
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build docs and translation catalogs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Sync docs environment
+        run: uv sync --locked
+
+      - name: Prepare staging directory
+        run: bash tools/prepare-source.sh
+
+      - name: Build English HTML
+        run: uv run --locked sphinx-build -b html -c . _staging _build/html/en
+
+      - name: Extract gettext catalogs
+        run: SOURCE_DATE_EPOCH=0 uv run --locked sphinx-build -b gettext -c . _staging _build/gettext
+
+      - name: Check zh_CN catalogs are current
+        run: |
+          uv run --locked sphinx-intl update -p _build/gettext -l zh_CN --locale-dir locales
+          uv run --locked python tools/i18n/normalize_po_files.py
+          git diff --exit-code -- locales
+
+      - name: Build zh_CN HTML
+        run: uv run --locked sphinx-build -b html -c . -D language=zh_CN _staging _build/html/zh_CN
+
+      - name: Report zh_CN catalog status
+        run: uv run --locked python tools/i18n/catalog_status.py
+
+      - name: Prepare GitHub Pages artifact
+        if: github.event_name != 'pull_request'
+        run: |
+          cat > _build/html/index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=en/">
+          <title>The Open Source Way</title>
+          <p><a href="en/">Open the English guidebook</a></p>
+          HTML
+          touch _build/html/.nojekyll
+
+      - name: Upload HTML previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: guidebook-html-previews
+          path: _build/html
+
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build/html
+
+  deploy:
+    name: Deploy GitHub Pages
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  pdf:
+    name: Build PDF docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install PDF build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            fonts-freefont-otf \
+            fonts-noto-cjk \
+            latexmk \
+            texlive-fonts-recommended \
+            texlive-lang-chinese \
+            texlive-latex-extra \
+            texlive-latex-recommended \
+            texlive-xetex
+
+      - name: Sync docs environment
+        run: uv sync --locked
+
+      - name: Prepare staging directory
+        run: bash tools/prepare-source.sh
+
+      - name: Build English PDF
+        run: uv run --locked sphinx-build -M latexpdf -c . _staging _build/pdf/en
+
+      - name: Build zh_CN PDF
+        run: uv run --locked sphinx-build -M latexpdf -c . -D language=zh_CN _staging _build/pdf/zh_CN
+
+      - name: Upload PDF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: guidebook-pdf
+          path: _build/pdf/**/*.pdf
+
+  linkcheck:
+    name: Check external links advisory
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Sync docs environment
+        run: uv sync --locked
+
+      - name: Prepare staging directory
+        run: bash tools/prepare-source.sh
+
+      - name: Check external links advisory
+        id: linkcheck
+        continue-on-error: true
+        run: uv run --locked sphinx-build -b linkcheck -c . _staging _build/linkcheck
+
+      - name: Summarize advisory linkcheck
+        if: always()
+        run: |
+          echo "External link checking is advisory and does not block docs builds or Pages deployment." >> "$GITHUB_STEP_SUMMARY"
+          if [ "${{ steps.linkcheck.outcome }}" != "success" ]; then
+            echo "::warning::External link check reported issues; inspect the linkcheck job log for details."
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "Result: ${{ steps.linkcheck.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+          fi

@@ -1,0 +1,17 @@
+{%- set ns = namespace(prefix='') -%}
+{%- for _ in pagename.split('/') -%}
+  {%- set ns.prefix = ns.prefix ~ '../' -%}
+{%- endfor -%}
+{%- set current_language = guidebook_current_language | default(language, true) -%}
+<div class="language-switcher">
+  <label for="language-switcher-select">{{ _('Languages') }}</label>
+  <select
+    id="language-switcher-select"
+    onchange="if (this.value) window.location.href = this.value"
+  >
+    {%- for locale in guidebook_languages %}
+      {%- set aliases = locale.aliases | default([]) -%}
+      <option value="{{ ns.prefix }}{{ locale.build_dir }}/{{ pagename }}.html"{% if current_language == locale.code or current_language in aliases %} selected{% endif %}>{{ locale.label }}</option>
+    {%- endfor %}
+  </select>
+</div>
