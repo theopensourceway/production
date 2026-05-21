@@ -136,13 +136,13 @@ jobs:
 
       - name: Build English PDF
         run: |
-          uv run --locked sphinx-build -b latex -c . _staging _build/pdf/en/latex
-          latexmk -pdf -dvi- -ps- -interaction=nonstopmode _build/pdf/en/latex/the-open-source-way.tex
+          uv run --locked sphinx-build -b latex -c . _staging _build/pdf/en
+          cd _build/pdf/en && latexmk -xelatex -interaction=nonstopmode the-open-source-way.tex
 
       - name: Build zh_CN PDF
         run: |
-          uv run --locked sphinx-build -b latex -c . -D language=zh_CN _staging _build/pdf/zh_CN/latex
-          latexmk -pdf -dvi- -ps- -interaction=nonstopmode _build/pdf/zh_CN/latex/the-open-source-way.tex
+          uv run --locked sphinx-build -b latex -c . -D language=zh_CN _staging _build/pdf/zh_CN
+          cd _build/pdf/zh_CN && latexmk -xelatex -interaction=nonstopmode the-open-source-way.tex
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v4

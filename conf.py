@@ -1,9 +1,11 @@
+import os
+
 project = "The Open Source Way"
 author = "The Open Source Way contributors"
 
 extensions = ["myst_parser"]
-templates_path = ["_templates"]
-html_static_path = ["_static"]
+templates_path = [os.path.abspath("_templates")]
+html_static_path = [os.path.abspath("_static")]
 html_css_files = ["custom.css"]
 
 source_suffix = {
@@ -19,7 +21,7 @@ exclude_patterns = [
     "SUMMARY.md",
 ]
 
-locale_dirs = ["locales/"]
+locale_dirs = [os.path.abspath("locales")]
 gettext_compact = False
 
 myst_heading_anchors = 3
