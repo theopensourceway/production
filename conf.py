@@ -30,6 +30,25 @@ gettext_compact = False
 myst_enable_extensions = ["colon_fence", "tasklist"]
 myst_heading_anchors = 3
 
+# Sites that reject the linkcheck bot with HTTP 403 (and similar) in CI even
+# though the URLs resolve fine in a browser. linkcheck is advisory, but these
+# patterns keep the report focused on genuinely broken links. Genuine 404s and
+# anchor problems are intentionally NOT listed here so they stay visible.
+linkcheck_ignore = [
+    r"https://www\.bls\.gov/",
+    r"https://www\.nytimes\.com/",
+    r"https://www\.unwomen\.org/",
+    r"https://www\.weforum\.org/",
+    r"https://academic\.oup\.com/",
+    r"https://.*\.wiley\.com/",
+    r"https://www\.huffpost\.com/",
+    r"https://www\.managers\.org\.uk/",
+    r"https://www\.mayoclinic\.org/",
+    r"https://www\.teamblind\.com/",
+    r"https://www\.theburnoutproject\.com\.au/",
+    r"https://www\.opavote\.com/",
+]
+
 language = "en"
 guidebook_languages = [
     {"code": "en", "build_dir": "en", "label": "English", "aliases": []},
