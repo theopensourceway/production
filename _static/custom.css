@@ -31,3 +31,32 @@
 .bd-article-container a.reference.internal[href^="#fn-"] {
   white-space: nowrap;
 }
+
+/* Task lists (MyST "tasklist" extension): render checkboxes via CSS and keep
+   the list compact instead of the spacious paragraph-wrapped default.
+
+   The checkbox <input> the extension emits lives inside the translatable
+   paragraph, so it disappears from translated (e.g. zh_CN) output. We hide the
+   real input and draw a ☐ with a pseudo-element instead, so every language
+   renders an identical checkbox. */
+.bd-article-container ul.contains-task-list {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.bd-article-container li.task-list-item {
+  margin-bottom: 0.15rem;
+}
+
+.bd-article-container li.task-list-item > p {
+  margin-bottom: 0;
+}
+
+.bd-article-container li.task-list-item input.task-list-item-checkbox {
+  display: none;
+}
+
+.bd-article-container li.task-list-item > p::before {
+  content: "\2610"; /* ☐ ballot box */
+  margin-right: 0.5rem;
+}

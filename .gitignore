@@ -3,3 +3,5 @@ _staging/
 .venv/
 node_modules/
 *.mo
+__pycache__/
+*.pyc

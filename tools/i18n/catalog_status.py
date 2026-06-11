@@ -23,18 +23,34 @@ def main() -> int:
 
     locale_dir = Path(args.locale_dir)
     rows = []
-    totals = {"messages": 0, "translated": 0, "untranslated": 0, "fuzzy": 0}
+    totals = {
+        "messages": 0,
+        "translated": 0,
+        "untranslated": 0,
+        "fuzzy": 0,
+        "identical": 0,
+    }
 
     for path in sorted(locale_dir.rglob("*.po")):
         messages = catalog_messages(path)
         translated = sum(1 for message in messages if message.string)
         fuzzy = sum(1 for message in messages if "fuzzy" in message.flags)
         untranslated = len(messages) - translated
+        # Segments whose translation is byte-for-byte the English source: these
+        # render as English on the page even though gettext counts them as
+        # "translated". Citations/URLs are commonly (and intentionally) left
+        # this way, so this is reported for visibility rather than enforced.
+        identical = sum(
+            1
+            for message in messages
+            if message.string and message.string == message.id
+        )
 
         totals["messages"] += len(messages)
         totals["translated"] += translated
         totals["untranslated"] += untranslated
         totals["fuzzy"] += fuzzy
+        totals["identical"] += identical
 
         rows.append(
             (
@@ -43,15 +59,16 @@ def main() -> int:
                 translated,
                 untranslated,
                 fuzzy,
+                identical,
             )
         )
 
-    print("file,messages,translated,untranslated,fuzzy")
+    print("file,messages,translated,untranslated,fuzzy,identical")
     for row in rows:
         print(",".join(str(value) for value in row))
 
     print(
-        "TOTAL,{messages},{translated},{untranslated},{fuzzy}".format(
+        "TOTAL,{messages},{translated},{untranslated},{fuzzy},{identical}".format(
             **totals,
         )
     )
