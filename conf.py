@@ -1,9 +1,12 @@
 import os
+import sys
+
+sys.path.insert(0, os.path.abspath("tools/sphinx_ext"))
 
 project = "The Open Source Way"
 author = "The Open Source Way contributors"
 
-extensions = ["myst_parser"]
+extensions = ["myst_parser", "cjk_emphasis"]
 templates_path = [os.path.abspath("_templates")]
 html_static_path = [os.path.abspath("_static")]
 html_css_files = ["custom.css"]
@@ -24,6 +27,7 @@ exclude_patterns = [
 locale_dirs = [os.path.abspath("locales")]
 gettext_compact = False
 
+myst_enable_extensions = ["colon_fence", "tasklist"]
 myst_heading_anchors = 3
 
 language = "en"
@@ -34,13 +38,25 @@ guidebook_languages = [
 html_theme = "sphinx_book_theme"
 html_title = project
 html_theme_options = {
-    "repository_url": "https://github.com/theopensourceway/production",
+    # The repository button and edit/issue links point at the guidebook repo,
+    # which holds the editorial content most readers will want to report on.
+    "repository_url": "https://github.com/theopensourceway/guidebook",
     "repository_branch": "main",
-    "path_to_docs": "guidebook",
+    "path_to_docs": "",
     "use_edit_page_button": True,
     "use_issues_button": True,
     "use_repository_button": True,
     "use_download_button": False,
+    # A secondary icon link points at the production repo for build toolchain,
+    # CI, and theme issues.
+    "icon_links": [
+        {
+            "name": "Build toolchain (production)",
+            "url": "https://github.com/theopensourceway/production",
+            "icon": "fa-solid fa-screwdriver-wrench",
+            "type": "fontawesome",
+        },
+    ],
     "home_page_in_toc": True,
     "show_navbar_depth": 1,
     "max_navbar_depth": 3,

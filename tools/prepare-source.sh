@@ -16,4 +16,7 @@ cp -r guidebook/* "$STAGING/"
 # Overlay Sphinx navigation files
 cp -r nav/* "$STAGING/"
 
+# Rewrite GitBook-specific syntax (e.g. {% hint %}) into MyST equivalents
+python3 tools/convert_gitbook.py "$STAGING"
+
 echo "Staging directory prepared at $STAGING/"

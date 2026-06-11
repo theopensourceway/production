@@ -24,20 +24,17 @@ msgstr ""
 msgid "Community Manager Self-Care"
 msgstr "社区管理者自我健康管理"
 
-#: ../../growing-contributors/community-manager-self-care.md:9
+#: ../../growing-contributors/community-manager-self-care.md:10
 #, python-brace-format, python-format
 msgid ""
-"{% hint style=\"danger\" %} Materials in this chapter are for "
-"informational purposes only, not for the purpose of providing medical "
-"advice. This chapter is not intended as a substitute for professional "
-"medical advice, diagnosis, or treatment. Always seek the advice of your "
-"physician or other qualified health care provider with any questions or "
-"concerns you may have regarding your health, both mental and physical. {%"
-" endhint %}"
+"Materials in this chapter are for informational purposes only, not for "
+"the purpose of providing medical advice. This chapter is not intended as "
+"a substitute for professional medical advice, diagnosis, or treatment. "
+"Always seek the advice of your physician or other qualified health care "
+"provider with any questions or concerns you may have regarding your "
+"health, both mental and physical."
 msgstr ""
-"{% hint style=\"danger\" %} "
 "本章材料仅供信息参考之用，并非旨在提供医疗建议。本章内容不能替代专业的医疗建议、诊断或治疗。对于你可能有的任何身心健康问题或疑虑，请务必咨询你的医生或其他合格的医疗服务提供者。"
-" {% endhint %}"
 
 #: ../../growing-contributors/community-manager-self-care.md:13
 msgid ""
@@ -107,7 +104,6 @@ msgid "The WHO (World Health Organization) defines self-care as:"
 msgstr "世界卫生组织（WHO）将自我健康管理定义为："
 
 #: ../../growing-contributors/community-manager-self-care.md:29
-#, fuzzy
 msgid ""
 "\"Self-care is the ability of individuals, families and communities to "
 "promote health, prevent disease, maintain health, and to cope with "
@@ -146,7 +142,6 @@ msgid "Emotional contagion"
 msgstr "情绪传染"
 
 #: ../../growing-contributors/community-manager-self-care.md:39
-#, fuzzy
 msgid ""
 "Community managers are often seen as leaders, the people everyone can "
 "turn to, an inspiration for others to emulate. This seemingly high "
@@ -174,7 +169,6 @@ msgid ""
 msgstr "踏上自我健康管理之路的首要任务之一，便是觉察自身情绪状态对社区可能产生的影响。"
 
 #: ../../growing-contributors/community-manager-self-care.md:45
-#, fuzzy
 msgid ""
 "Emotions (both positive and negative) are [highly contagious](#user-"
 "content-fn-3)[^3]. Our emotional expressions have the power to "
@@ -258,7 +252,6 @@ msgid ""
 msgstr "但\"掌控局面\"、\"被控制\"和\"处于可控状态\"之间存在本质区别。"
 
 #: ../../growing-contributors/community-manager-self-care.md:65
-#, fuzzy
 msgid ""
 "The belief that \"being in control is a reflection of our confidence in "
 "what we produce\" is inaccurate. It actually demonstrates that we are "
@@ -313,7 +306,6 @@ msgid ""
 msgstr "维持这种情感劳动可能令人崩溃。我们必须承认并接受：完美无法企及，更重要的是——这从来不是成为优秀领导者的必要条件。真正重要的是人们能感受到你作为普通人的一面。"
 
 #: ../../growing-contributors/community-manager-self-care.md:77
-#, fuzzy
 msgid ""
 "People gravitate to others with whom they [share a kinship](#user-"
 "content-fn-6)[^6], and being able to identify this feeling of kinship is "
@@ -546,7 +538,6 @@ msgid "Burnout"
 msgstr "过劳"
 
 #: ../../growing-contributors/community-manager-self-care.md:145
-#, fuzzy
 msgid ""
 "What exactly is burnout? The [WHO definition of burnout](#user-content-"
 "fn-7)[^7] is:"
@@ -559,7 +550,6 @@ msgid ""
 msgstr "\"职业过劳是一种因长期工作压力未能得到有效管理而产生的综合征。\""
 
 #: ../../growing-contributors/community-manager-self-care.md:149
-#, fuzzy
 msgid ""
 "Burnout can affect us all and in any occupation, however it seems more "
 "prevalent in roles that are mentally and emotionally draining for "
@@ -570,7 +560,6 @@ msgid ""
 msgstr "职业过劳可能影响我们每个人，无论身处何种行业。然而，在那些长期消耗心智与情感的岗位上，这种现象似乎更为普遍。究其原因，往往与这些岗位中盛行的无私精神有关——人们习惯于将他人置于首位[^8]：无论是为了客户还是社群，他们总是不遗余力地营造愉悦满足的环境或氛围。"
 
 #: ../../growing-contributors/community-manager-self-care.md:151
-#, fuzzy
 msgid ""
 "It is also appearing [more and more within the tech industry](#user-"
 "content-fn-9)[^9]. This increase has been attributed to the seemly "
@@ -604,7 +593,6 @@ msgid ""
 msgstr "职业过劳极难被察觉，这不仅因其症状隐蔽且呈渐进性发展，更因它常被误诊为早期阶段更短暂、更常见的职场压力。二者症状相似，直到为时已晚，问题已演变成更严重、更难治愈的深层次病症。"
 
 #: ../../growing-contributors/community-manager-self-care.md:159
-#, fuzzy
 msgid ""
 "Psychologist Herbert Freudenberger has released multiple books and "
 "articles since the 1970s regarding his research of the possible causes, "
@@ -628,7 +616,6 @@ msgid "Exhaustion"
 msgstr "崩溃"
 
 #: ../../growing-contributors/community-manager-self-care.md:165
-#, fuzzy
 msgid ""
 "Loss of energy and accompanying feelings of weariness are usually the "
 "first distress signals especially if you naturally [have high energy "
@@ -750,7 +737,6 @@ msgid "Paranoia"
 msgstr "妄想症"
 
 #: ../../growing-contributors/community-manager-self-care.md:197
-#, fuzzy
 msgid ""
 "[Leading from the signs of feeling unappreciated to feeling as though the"
 " world is against us](#user-content-fn-12)[^12]. When things go wrong, "
@@ -795,7 +781,6 @@ msgid "Burnout cycle"
 msgstr "过劳循环"
 
 #: ../../growing-contributors/community-manager-self-care.md:209
-#, fuzzy
 msgid ""
 "Freudenberger and his colleague Gail North [later categorized the "
 "consequences](#user-content-fn-13)[^13] of these symptoms into 12 phases "
@@ -912,7 +897,6 @@ msgid ""
 msgstr "既然我们已经认识到过劳的破坏性影响，现在让我们探讨这些症状可能源自我们的工作角色，甚至来自社区内部。"
 
 #: ../../growing-contributors/community-manager-self-care.md:232
-#, fuzzy
 msgid ""
 "We earlier described that burnout is a combination of many factors but a "
 "recurring element is the realization, subconsciously or not, that we "
@@ -1002,7 +986,6 @@ msgid "Work overload"
 msgstr "工作超负荷"
 
 #: ../../growing-contributors/community-manager-self-care.md:256
-#, fuzzy
 msgid ""
 "Probably the most common experience contributing to burnout is [the over-"
 "burdening of one’s workload](#user-content-fn-16)[^16], whether from our "
@@ -1032,7 +1015,6 @@ msgid "Preventing/treating burnout"
 msgstr "预防/应对职业过劳"
 
 #: ../../growing-contributors/community-manager-self-care.md:264
-#, fuzzy
 msgid ""
 "If you feel yourself or anyone else succumbing to burnout then the most "
 "direct approach is to take a break from the source of the stress, which "
@@ -1443,7 +1425,6 @@ msgid "Tackling imposter syndrome"
 msgstr "应对冒充者综合征"
 
 #: ../../growing-contributors/community-manager-self-care.md:360
-#, fuzzy
 msgid ""
 "This term was first defined by [psychologists Dr. Pauline Clance and Dr. "
 "Suzanne Imes](#user-content-fn-18)[^18] in the 1970s as the internal "
@@ -1466,7 +1447,6 @@ msgid ""
 msgstr "冒充者综合征患者往往难以内化和接纳自身成就，他们习惯弱化积极反馈，并将他人工作与自身进行比较。当我们开始新工作、承担新职责或角色、或是结束职业空窗期重返岗位时，这种情况更易发生。为补偿这种长期自我怀疑，我们开始加班工作、拖延事务，或以不必要的方式试图证明自身价值的合理性。"
 
 #: ../../growing-contributors/community-manager-self-care.md:364
-#, fuzzy
 msgid ""
 "Dr. Valerie Young [further categorized these types of flawed thinking"
 "](#user-content-fn-19)[^19] of what sufferers believe it takes to be "
@@ -1624,7 +1604,6 @@ msgid ""
 msgstr "我们深知社区的力量，它能将人们凝聚在一起。在正确的引导和满满的爱意之下，我们甚至可以移山填海。但为什么我们总觉得，对自己却无法抱持同样的心态呢？"
 
 #: ../../growing-contributors/community-manager-self-care.md:412
-#, fuzzy
 msgid ""
 "During stressful and tough times, whether it’s just a bad day, or more "
 "chronic episodes of illness, research has shown that having a "
@@ -1637,7 +1616,6 @@ msgid ""
 msgstr "无论是遭遇糟糕的一天，还是长期与疾病抗争，研究表明：拥有一个紧密（未必庞大）的社会支持网络对身心健康至关重要[^20]。若缺乏这样的网络，孤独与隔绝感便会滋生，进而加剧抑郁和焦虑[^21]。往往正是这个支持网络——即便我们自以为孤立无援——最先察觉我们行为举止的异常，甚至早于我们自己的觉察。"
 
 #: ../../growing-contributors/community-manager-self-care.md:414
-#, fuzzy
 msgid ""
 "[A social support network is made up of friends, family, and peers"
 "](#user-content-fn-22)[^22]. Although this is different from a support "
@@ -1667,7 +1645,6 @@ msgid ""
 msgstr "我们可能会发现，社区中的那些朝夕相处的伙伴，逐渐成为了我们社会支持网络的一部分。每个人都以独特的方式为我们提供支持，在生活中给予不同形式的帮助。但同样要记住，我们也应当成为他人支持网络中的一环。"
 
 #: ../../growing-contributors/community-manager-self-care.md:420
-#, fuzzy
 msgid ""
 "The more education and communicating with our members about the benefits "
 "of self-care, the more likely we will see it being practiced and "
@@ -1682,7 +1659,6 @@ msgid ""
 msgstr "越是向成员普及自我健康管理的益处并加强沟通，就越能看到这种行为被实践和鼓励。这反过来有助于在社区中营造更加关怀与包容的氛围。教育可以采取多种形式：开展倡导自我健康管理的讨论、举办心理健康宣传活动[^23]，在新成员加入[^25]时将相关条款加入社区指南[^24]（如鼓励团队成员在工作量或其他因素影响健康时及时沟通），或组织心理健康意识培训。"
 
 #: ../../growing-contributors/community-manager-self-care.md:422
-#, fuzzy
 msgid ""
 "If you see a member on the team or community showing symptoms of burnout "
 "then reach out to them and let them know you are concerned for their well"
@@ -1692,7 +1668,6 @@ msgid ""
 msgstr "如果你发现团队或社区中某位成员出现过劳症状，请主动联系并表达对其健康的关切。表明你随时准备提供支持，大多数情况下他们会积极回应，并共同协作缓解压力[^26]。"
 
 #: ../../growing-contributors/community-manager-self-care.md:424
-#, fuzzy
 msgid ""
 "However, it is important to make clear here that if we feel that we are "
 "unable to assist a community member’s emotional stress beyond our role’s "
