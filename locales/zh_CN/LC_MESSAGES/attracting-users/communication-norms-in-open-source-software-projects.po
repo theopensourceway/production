@@ -247,7 +247,6 @@ msgid ""
 msgstr "如果项目遵循特定的编码规范，请务必在开发者文档中明确说明这些规范。因为代码缩进方式不合要求而被维护者拒绝补丁，可能会大大打击贡献者的积极性。但对于用户来说，这些技术细节通常并不必要。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:57
-#, python-brace-format, python-format
 msgid ""
 "Develop a style guide for your project and make sure it is easy to find "
 "in your developer-oriented documentation. Not every project will create "
@@ -255,8 +254,7 @@ msgid ""
 "conventions the project will observe. If the project uses a previously "
 "published style guide, make sure to link to it in the developer "
 "documentation[^guides]."
-msgstr ""
-"为项目制定风格指南，并确保在面向开发者的文档中易于查找。并非所有项目都需要创建自己的风格指南，但注明项目将遵循的代码规范是最佳实践。如果项目采用已发布的风格指南，务必在开发者文档[^guides]中提供其链接。"
+msgstr "为项目制定风格指南，并确保在面向开发者的文档中易于查找。并非所有项目都需要创建自己的风格指南，但注明项目将遵循的代码规范是最佳实践。如果项目采用已发布的风格指南，务必在开发者文档[^guides]中提供其链接。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:60
 msgid "The virtual showcase: Crafting your project's website"
@@ -342,9 +340,9 @@ msgstr "让我们再看一个流行项目的例子：Kubernetes。"
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:82
 msgid ""
 "When visiting the project home page, "
-"[kubernetes.io](http://kubernetes.io/), a visitor immediately sees the "
+"[kubernetes.io](https://kubernetes.io/), a visitor immediately sees the "
 "following explanation:"
-msgstr "当访问项目主页[kubernetes.io](http://kubernetes.io/)时，访客立即看到以下说明："
+msgstr "当访问项目主页[kubernetes.io](https://kubernetes.io/)时，访客立即看到以下说明："
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:84
 msgid ""
@@ -419,7 +417,6 @@ msgid ""
 msgstr "编写优秀\"入门\"文档（有时称为\"上手文档\"）的流程不在本章讨论范围内。（详见本指南专设的\"新手指引\"章节。）此处只需明确：开源项目网站应设立专门板块，帮助新用户和潜在贡献者开始使用软件。将该板块清晰标注为\"入门指南\"或\"新用户\"能让人在需要时轻松找到。若能在新手指引文档中进一步区分\"新用户\"与\"新贡献者\"则更为理想，因为这两个群体的需求差异显著。在项目网站上为新人明确指引这些资源，有助于避免论坛和实时聊天室等沟通渠道反复出现\"如何上手\"的重复提问。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:99
-#, python-brace-format, python-format
 msgid ""
 "In your project's \"getting started\" guide for new users and "
 "participants, include any information you can about other places those "
@@ -427,8 +424,7 @@ msgid ""
 "Slack channel called \"newbies\" staffed by folks who enjoy mentoring and"
 " helping people get started, whereas ongoing development discussions may "
 "take place in the \"developer\" channel."
-msgstr ""
-"在项目的新手入门指南中，为初次接触项目的用户和参与者提供所有能获取帮助的渠道信息。例如：可以设置名为\"新手区\"的 Slack "
+msgstr "在项目的新手入门指南中，为初次接触项目的用户和参与者提供所有能获取帮助的渠道信息。例如：可以设置名为\"新手区\"的 Slack "
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:102
 msgid "Frequently asked questions"
@@ -717,16 +713,18 @@ msgid ""
 "behavior for the software, and a request for log files or screenshots to "
 "help guide the issue reviewer in better understanding the bug report. "
 "Several issue trackers support templates for bug reports, including "
-"[GitHub](https://docs.github.com/en/github/building-a-strong-community"
-"/configuring-issue-templates-for-your-repository), "
-"[GitLab](https://docs.gitlab.com/ee/user/project/description_templates.html),"
-" [Redmine](https://www.redmine.org/plugins/redmine_issue_templates), and "
+"[GitHub](https://docs.github.com/en/communities/using-templates-to-"
+"encourage-useful-issues-and-pull-requests/configuring-issue-templates-"
+"for-your-repository), "
+"[GitLab](https://docs.gitlab.com/user/project/description_templates/), "
+"[Redmine](https://www.redmine.org/plugins/redmine_issue_templates), and "
 "[Trac](https://trac-hacks.org/wiki/TracTicketTemplatePlugin)."
 msgstr ""
 "问题模板中的常见字段包括问题摘要、重现步骤、用户观察到的实际行为、软件的预期行为，以及请求提供日志文件或截图以帮助问题审核者更好地理解错误报告。多个问题追踪系统支持错误报告模板，包括"
-" [GitHub](https://docs.github.com/en/github/building-a-strong-community"
-"/configuring-issue-templates-for-your-"
-"repository)、[GitLab](https://docs.gitlab.com/ee/user/project/description_templates.html)、[Redmine](https://www.redmine.org/plugins/redmine_issue_templates)和[Trac](https"
+" [GitHub](https://docs.github.com/en/communities/using-templates-to-"
+"encourage-useful-issues-and-pull-requests/configuring-issue-templates-"
+"for-your-"
+"repository)、[GitLab](https://docs.gitlab.com/user/project/description_templates/)、[Redmine](https://www.redmine.org/plugins/redmine_issue_templates)和[Trac](https"
 "://trac-hacks.org/wiki/TracTicketTemplatePlugin)。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:164
@@ -1037,7 +1035,6 @@ msgid ""
 msgstr "确保即使项目成员发生变化，关键决策的制定方式及原因也始终清晰可查。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:231
-#, python-brace-format, python-format
 msgid ""
 "If your project carries on most of its development discussions in the "
 "issue tracker, consider taking some small steps to highlight these "
@@ -1122,7 +1119,6 @@ msgid ""
 msgstr "正如本章多次强调的那样，与所有项目参与者保持友善、得体的沟通应成为互动的默认行为准则。当与那些用英语表达存在困难的人交流时，同样需要遵循这一原则。如果难以理解对方的表述或需求，应通过提问澄清来表明你乐意提供帮助。切勿仅因对方书面英语水平有限就忽视其存在，或宣称其在项目中不受欢迎。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:253
-#, python-brace-format, python-format
 msgid ""
 "People who are not native speakers of English often begin their "
 "communication with the project with an apology for their poor English "
@@ -1132,8 +1128,7 @@ msgid ""
 "be available to them in a language with which they are more familiar, for"
 " example a Spanish language forum or a Chinese language mailing list for "
 "the project."
-msgstr ""
-"非英语母语者在与项目沟通时，常会因英语水平欠佳而先致歉。收到此类信息时，请感谢对方的来信，并表达对其努力与项目沟通的赞赏。如有可能，可引导他们获取更熟悉的语言资源，例如项目的西班牙语论坛或中文邮件列表。"
+msgstr "非英语母语者在与项目沟通时，常会因英语水平欠佳而先致歉。收到此类信息时，请感谢对方的来信，并表达对其努力与项目沟通的赞赏。如有可能，可引导他们获取更熟悉的语言资源，例如项目的西班牙语论坛或中文邮件列表。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:256
 msgid "Avoid idioms in written documentation"
@@ -1532,15 +1527,14 @@ msgstr "在开源项目中实现高效沟通的最佳方式是以善意和礼貌
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:325
 msgid ""
 "For a sample style guide, see [PEP 8 — Style Guide for Python "
-"Code](https://www.python.org/dev/peps/pep-0008/) or the [style guide for "
+"Code](https://peps.python.org/pep-0008/) or the [style guide for "
 "contributing to Mozilla Firefox](https://firefox-source-docs.mozilla.org"
 "/code-quality/coding-style/index.html), a project that employs multiple "
 "programming languages in its development."
 msgstr ""
-"关于风格指南的示例，请参阅 [PEP 8 — Python "
-"代码风格指南](https://www.python.org/dev/peps/pep-0008/) 或 [Mozilla Firefox "
-"贡献风格指南](https://firefox-source-docs.mozilla.org/code-quality/coding-"
-"style/index.html)，后者是一个在开发中使用多种编程语言的项目。"
+"关于风格指南的示例，请参阅 [PEP 8 — Python 代码风格指南](https://peps.python.org/pep-0008/) "
+"或 [Mozilla Firefox 贡献风格指南](https://firefox-source-docs.mozilla.org/code-"
+"quality/coding-style/index.html)，后者是一个在开发中使用多种编程语言的项目。"
 
 #: ../../attracting-users/communication-norms-in-open-source-software-projects.md:327
 msgid ""
