@@ -17,8 +17,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Normalize PO files (trailing newlines).")
     parser.add_argument(
         "--locale-dir",
-        default="locales",
-        help="Path to the locales root directory (default: locales).",
+        default="guidebook/locales",
+        help="Path to the locales root directory (default: guidebook/locales).",
     )
     args = parser.parse_args()
 

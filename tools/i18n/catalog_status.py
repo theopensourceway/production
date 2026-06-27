@@ -16,8 +16,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Report zh_CN catalog status.")
     parser.add_argument(
         "--locale-dir",
-        default="locales/zh_CN/LC_MESSAGES",
-        help="Path to the LC_MESSAGES directory (default: locales/zh_CN/LC_MESSAGES).",
+        default="guidebook/locales/zh_CN/LC_MESSAGES",
+        help="Path to the LC_MESSAGES directory (default: guidebook/locales/zh_CN/LC_MESSAGES).",
     )
     args = parser.parse_args()
 

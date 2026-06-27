@@ -24,7 +24,10 @@ exclude_patterns = [
     "SUMMARY.md",
 ]
 
-locale_dirs = [os.path.abspath("locales")]
+# Translation catalogs live in the editorial repo (the guidebook submodule),
+# so they sit next to the English source they translate. The production build
+# consumes them from there; there is no separate copy in this repository.
+locale_dirs = [os.path.abspath("guidebook/locales")]
 gettext_compact = False
 
 myst_enable_extensions = ["colon_fence", "tasklist"]
