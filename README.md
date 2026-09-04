@@ -30,6 +30,28 @@ uv run sphinx-build -M latexpdf -c . guidebook _build/pdf/en
 uv run sphinx-build -M latexpdf -c . -D language=zh_CN guidebook _build/pdf/zh_CN
 ```
 
+## Building EPUBs
+
+EPUB builds use the same prepared source tree as CI. Set
+`GUIDEBOOK_VERSION` to the release tag when producing release artifacts; it
+defaults to `dev` for preview builds.
+
+```bash
+bash tools/prepare-source.sh
+
+uv run sphinx-build -W --keep-going -b epub -c . \
+  -d _build/doctrees/epub/en \
+  _staging _build/epub/en
+
+uv run sphinx-build -W --keep-going -b epub -c . \
+  -D language=zh_CN \
+  -d _build/doctrees/epub/zh_CN \
+  _staging _build/epub/zh_CN
+```
+
+CI validates both generated books with W3C EPUBCheck before uploading the
+`guidebook-epub` artifact.
+
 ## Translation workflow
 
 ```bash
@@ -53,7 +75,7 @@ uv run python tools/i18n/catalog_status.py --locale-dir guidebook/locales
 ├── _static/             # Custom CSS
 ├── _templates/          # Jinja templates (language switcher)
 ├── tools/i18n/          # Translation utility scripts
-├── .github/workflows/   # CI: build, PDF, Pages, linkcheck
+├── .github/workflows/   # CI: HTML, EPUB, PDF, Pages, linkcheck
 └── guidebook/           # Editorial source (git submodule)
     ├── index.md
     ├── locales/zh_CN/   # Translation catalogs

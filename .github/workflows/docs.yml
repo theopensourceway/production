@@ -102,6 +102,67 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+  epub:
+    name: Build and validate EPUB docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Set up Java for EPUBCheck
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Sync docs environment
+        run: uv sync --locked
+
+      - name: Prepare staging directory
+        run: bash tools/prepare-source.sh
+
+      - name: Build English EPUB
+        run: |
+          uv run --locked sphinx-build -W --keep-going -b epub -c . \
+            -d _build/doctrees/epub/en \
+            _staging _build/epub/en
+
+      - name: Build zh_CN EPUB
+        run: |
+          uv run --locked sphinx-build -W --keep-going -b epub -c . \
+            -D language=zh_CN \
+            -d _build/doctrees/epub/zh_CN \
+            _staging _build/epub/zh_CN
+
+      - name: Install EPUBCheck
+        env:
+          EPUBCHECK_VERSION: 5.3.0
+          EPUBCHECK_SHA256: 6c07e68584b2e2ce2f89fe06e1246dfead3eb36b46b340e7d93524f29dcff6c5
+        run: |
+          curl --fail --location --silent --show-error \
+            --output /tmp/epubcheck.zip \
+            "https://github.com/w3c/epubcheck/releases/download/v${EPUBCHECK_VERSION}/epubcheck-${EPUBCHECK_VERSION}.zip"
+          echo "${EPUBCHECK_SHA256}  /tmp/epubcheck.zip" | sha256sum --check
+          unzip -q /tmp/epubcheck.zip -d /tmp/epubcheck
+
+      - name: Validate EPUB artifacts
+        run: |
+          find _build/epub -name '*.epub' -print0 | while IFS= read -r -d '' epub; do
+            java -jar /tmp/epubcheck/epubcheck-5.3.0/epubcheck.jar "$epub"
+          done
+
+      - name: Upload EPUB artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: guidebook-epub
+          path: _build/epub/**/*.epub
+
   pdf:
     name: Build PDF docs
     runs-on: ubuntu-latest

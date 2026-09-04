@@ -1,0 +1,23 @@
+/* MyST puts task-list checkboxes inside translatable paragraphs, so the input
+   is absent from translated output. Draw the same checkbox in every language. */
+ul.contains-task-list {
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+li.task-list-item {
+  margin-bottom: 0.15rem;
+}
+
+li.task-list-item > p {
+  margin-bottom: 0;
+}
+
+li.task-list-item input.task-list-item-checkbox {
+  display: none;
+}
+
+li.task-list-item > p::before {
+  content: "\2610"; /* ballot box */
+  margin-right: 0.5rem;
+}

@@ -1,10 +1,13 @@
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.abspath("tools/sphinx_ext"))
 
 project = "The Open Source Way"
 author = "The Open Source Way contributors"
+guidebook_version = os.environ.get("GUIDEBOOK_VERSION", "dev")
+version = guidebook_version.removeprefix("v")
 
 extensions = ["myst_parser", "cjk_emphasis"]
 templates_path = [os.path.abspath("_templates")]
@@ -57,6 +60,23 @@ guidebook_languages = [
     {"code": "en", "build_dir": "en", "label": "English", "aliases": []},
     {"code": "zh_CN", "build_dir": "zh_CN", "label": "简体中文", "aliases": ["zh"]},
 ]
+
+# EPUB metadata shared by every language build. Language-specific values and a
+# stable package identifier are filled in after command-line configuration
+# overrides (for example, ``-D language=zh_CN``) have been applied.
+epub_title = project
+epub_author = author
+epub_contributor = "The Open Source Way community"
+epub_description = (
+    "A guidebook for open source community management and participation."
+)
+epub_publisher = "The Open Source Way"
+epub_copyright = "The Open Source Way contributors; licensed under CC BY-SA 4.0"
+epub_scheme = "ID"
+epub_show_urls = "footnote"
+epub_tocdepth = 3
+epub_css_files = ["epub-custom.css"]
+
 html_theme = "sphinx_book_theme"
 html_title = project
 html_theme_options = {
@@ -111,6 +131,30 @@ html_sidebars = {
 
 
 def setup(app):
+    def configure_epub_metadata(app, config):
+        language_tag = "zh-CN" if config.language == "zh_CN" else config.language
+        release_value = guidebook_version or "dev"
+        release_slug = re.sub(r"[^A-Za-z0-9._-]+", "-", release_value).strip("-")
+        release_slug = release_slug or "dev"
+        identifier_token = re.sub(r"[^A-Za-z0-9_]", "_", release_slug)
+        language_token = re.sub(r"[^A-Za-z0-9_]", "_", language_tag)
+        identifier = (
+            f"theOpenSourceWayGuidebook_{identifier_token}_{language_token}"
+        )
+
+        config.epub_language = language_tag
+        config.epub_basename = (
+            f"the-open-source-way-{release_slug}-{language_tag}"
+        )
+        # Sphinx writes epub_identifier to the OPF package and epub_uid to the
+        # legacy NCX. EPUBCheck requires the two identifiers to match.
+        config.epub_identifier = identifier
+        config.epub_uid = identifier
+
+        if config.language == "zh_CN":
+            config.epub_title = "The Open Source Way（简体中文）"
+            config.epub_description = "开源社区管理与参与指南。"
+
     def localize_theme_options(app, config):
         if config.language == "zh_CN":
             config.html_theme_options["toc_title"] = "本页内容"
@@ -119,5 +163,17 @@ def setup(app):
         context["guidebook_current_language"] = app.config.language
         context["guidebook_languages"] = guidebook_languages
 
+    def make_epub_inputs_xhtml_safe(
+        app, pagename, templatename, context, doctree
+    ):
+        if app.builder.name == "epub" and "body" in context:
+            # MyST task lists emit HTML-style void elements. EPUB XHTML
+            # requires them to be explicitly self-closing.
+            context["body"] = re.sub(
+                r"(<input\b[^>]*?)(?<!/)>\s*", r"\1 />", context["body"]
+            )
+
+    app.connect("config-inited", configure_epub_metadata)
     app.connect("config-inited", localize_theme_options)
     app.connect("html-page-context", add_language_context)
+    app.connect("html-page-context", make_epub_inputs_xhtml_safe)
